@@ -1,0 +1,46 @@
+<mat-card class="home mat-elevation-z3">
+    <mat-card-title>Dados Pessoais</mat-card-title>
+        <form>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Nome" [(ngModel)]="client.nome" name="nome">
+            </mat-form-field>
+            <mat-form-field appearance="outline"> 
+                <input matInput placeholder="Cpf" [(ngModel)]="client.cpf" name="cpf">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Telefone" [(ngModel)]="client.telefone" name="telefone">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Cnpj" [(ngModel)]="client.cnpj" name="cnpj">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Email" [(ngModel)]="client.email" name="email">
+            </mat-form-field>
+        </form>
+</mat-card>
+<br>
+<mat-card class="mat-elevation-z3">
+    <mat-card-title>Endereço</mat-card-title>
+        <form>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Bairro/Vila" [(ngModel)]="client.bairro" name="bairro">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Endereço" [(ngModel)]="client.endereco" name="endereco">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Número" [(ngModel)]="client.numero" name="numero">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Cep" [(ngModel)]="client.cep" name="cep">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Cidade" [(ngModel)]="client.cidade" name="cidade">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="Uf" [(ngModel)]="client.uf" name="uf">
+            </mat-form-field>
+        </form>
+        <button mat-raised-button (click)="personalData()" color="primary">Salvar</button>
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+</mat-card>
