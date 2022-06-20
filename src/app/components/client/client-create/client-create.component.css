@@ -8,3 +8,10 @@ form {
 button {
     margin: 15px 7px 0px 0px;
 }
+
+.customize-errors {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    color: red;
+    font-size: 12px;
+}
