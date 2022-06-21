@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { Client } from 'src/app/models/client.model';
 import { ControllerService } from 'src/app/controllers/client.service';
+import { Client } from 'src/app/models/client.model';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -29,8 +29,6 @@ export class ClientCreateComponent implements OnInit {
       numero: null
       }
   }
-
-  // client: Client
 
   form: FormGroup;
 
@@ -62,7 +60,7 @@ export class ClientCreateComponent implements OnInit {
 
       endereco: ['', [Validators.required, Validators.pattern("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]*")]],
 
-      numero: ['', [Validators.required, Validators.pattern("^[0-9]*")]],
+      numero: ['', [Validators.required, Validators.pattern("^[0-9]*")]]
     });
   }
 

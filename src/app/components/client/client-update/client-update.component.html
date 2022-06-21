@@ -1,55 +1,81 @@
 <mat-card>
     <mat-card-title>Alterar Cliente</mat-card-title>
-    <form>
-        <mat-form-field>
-            <input matInput placeholder="Nome"
-            [(ngModel)]="client.nome" name="name">
+    <form [formGroup]="form">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Ex: João..." [(ngModel)]="client.nome" name="nome" formControlName="nome">
+            <mat-error *ngIf="form.controls.nome.invalid">Preencha o campo com no mínimo três letras</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Email"
-            [(ngModel)]="client.email" name="email">
+
+        <mat-form-field appearance="outline"> 
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="Ex: 89533515268" [(ngModel)]="client.cpf" name="cpf" formControlName="cpf">
+            <mat-error *ngIf="form.controls.cpf.invalid">Preencha o campo com apenas números</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Telefone"
-            [(ngModel)]="client.telefone" name="telefone">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="Ex: 19996857443" [(ngModel)]="client.telefone" name="telefone" formControlName="telefone">
+            <mat-error *ngIf="form.controls.telefone.invalid">Preencha o campo com apenas números incluindo o DDD</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Cpf"
-            [(ngModel)]="client.cpf" name="cpf">
+
+        <mat-form-field appearance="outline">
+            <mat-label>CNPJ</mat-label>
+            <input matInput placeholder="Ex: 95836274136958" [(ngModel)]="client.cnpj" name="cnpj" formControlName="cnpj">
+            <mat-error *ngIf="form.controls.cnpj.invalid">Preencha o campo com apenas números</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Cnpj"
-            [(ngModel)]="client.cnpj" name="cnpj">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex: joao@gmail.com" [(ngModel)]="client.email" name="email" formControlName="email">
+            <mat-error *ngIf="form.controls.email.invalid">{{getErrorMessageEmail()}}</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Uf"
-            [(ngModel)]="client.addressEntity.uf" name="uf">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Cidade"
-            [(ngModel)]="client.addressEntity.cidade" name="cidade">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Cep"
-            [(ngModel)]="client.addressEntity.cep" name="cep">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Bairro"
-            [(ngModel)]="client.addressEntity.bairro" name="bairro">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Endereço"
-            [(ngModel)]="client.addressEntity.endereco" name="endereco">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Numero"
-            [(ngModel)]="client.addressEntity.numero" name="numero">
-        </mat-form-field>
+        
     </form>
-    <button mat-raised-button (click)="updateClient()" color="primary">
-        Atualizar
-    </button>
-    <button mat-raised-button (click)="cancel()">
-        Cancelar
-    </button>
+</mat-card>
+<br>
+<mat-card class="mat-elevation-z3">
+<mat-card-title>Endereço</mat-card-title>
+    <form [formGroup]="form">
+
+        <mat-form-field appearance="outline">
+            <mat-label>Bairro/Vila</mat-label>
+            <input matInput placeholder="Ex: Bairro da Terceira" [(ngModel)]="client.addressEntity.bairro" name="bairro" formControlName="bairro">
+            <mat-error *ngIf="form.controls.bairro.invalid">Preencha o campo com apenas letras</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Endereço</mat-label>
+            <input matInput placeholder="Ex: Rua: Alamedas dos campos" [(ngModel)]="client.addressEntity.endereco" name="endereco" formControlName="endereco">
+            <mat-error *ngIf="form.controls.endereco.invalid">Preencha o campo com apenas letras</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Número</mat-label>
+            <input matInput placeholder="Ex: 583" [(ngModel)]="client.addressEntity.numero" name="numero" formControlName="numero">
+            <mat-error *ngIf="form.controls.numero.invalid">Preencha o campo com apenas números</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input matInput placeholder="Ex: 13335185" [(ngModel)]="client.addressEntity.cep" name="cep" formControlName="cep">
+            <mat-error *ngIf="form.controls.cep.invalid">Preencha o campo com apenas números</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input matInput placeholder="Ex: Valinhos" [(ngModel)]="client.addressEntity.cidade" name="cidade" formControlName="cidade">
+            <mat-error *ngIf="form.controls.cidade.invalid">Preencha o campo com apenas letras</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>UF</mat-label>
+            <input matInput placeholder="Ex: SP" [(ngModel)]="client.addressEntity.uf" name="uf" formControlName="uf">
+            <mat-error *ngIf="form.controls.uf.invalid">Preencha o campo com apenas duas letras em maiúsculas</mat-error>
+        </mat-form-field>
+
+    </form>
+    <button mat-raised-button color="primary" (click)="updateClient()" [disabled]="!form.valid">Atualizar</button>
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
 </mat-card>
