@@ -23,27 +23,27 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Uf"
-            [(ngModel)]="client.uf" name="uf">
+            [(ngModel)]="client.addressEntity.uf" name="uf">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Cidade"
-            [(ngModel)]="client.cidade" name="cidade">
+            [(ngModel)]="client.addressEntity.cidade" name="cidade">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Cep"
-            [(ngModel)]="client.cep" name="cep">
+            [(ngModel)]="client.addressEntity.cep" name="cep">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Bairro"
-            [(ngModel)]="client.bairro" name="bairro">
+            [(ngModel)]="client.addressEntity.bairro" name="bairro">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Endereço"
-            [(ngModel)]="client.endereco" name="endereco">
+            [(ngModel)]="client.addressEntity.endereco" name="endereco">
         </mat-form-field>
         <mat-form-field>
             <input matInput placeholder="Numero"
-            [(ngModel)]="client.numero" name="numero">
+            [(ngModel)]="client.addressEntity.numero" name="numero">
         </mat-form-field>
     </form>
     <button mat-raised-button (click)="updateClient()" color="primary">

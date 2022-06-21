@@ -5,7 +5,6 @@ import { Client } from 'src/app/models/client.model';
 import { ControllerService } from 'src/app/controllers/client.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { tinyValidator } from './HelpersFunctions/tinyValidator';
 
 @Component({
   selector: 'app-client-create',
@@ -21,13 +20,17 @@ export class ClientCreateComponent implements OnInit {
     telefone: null,
     cpf: null,
     cnpj: null,
-    uf: '',
-    cidade: '',
-    cep: null,
-    bairro: '',
-    endereco: '',
-    numero: null
+      addressEntity: {
+      uf: '',
+      cidade: '',
+      cep: null,
+      bairro: '',
+      endereco: '',
+      numero: null
+      }
   }
+
+  // client: Client
 
   form: FormGroup;
 
@@ -45,16 +48,21 @@ export class ClientCreateComponent implements OnInit {
       // The pattern accepts numbers from 0-9 with 11 repetitions.
       telefone: ['', [Validators.required, Validators.pattern("^[0-9]{11}")]],
 
-      // The \d in pattern search for numbers from 0-9.
-      cpf: ['', [Validators.required, Validators.pattern("^\d{3}\.\d{3}\.\d{3}\-\d{2}")]],
-      
-      cnpj: ['', Validators.required],
-      uf: ['', [Validators.required, Validators.maxLength(2)]],
-      cidade: ['', Validators.required],
-      cep: ['', Validators.required],
-      bairro: ['', Validators.required],
-      endereco: ['', Validators.required],
-      numero: ['', Validators.required],
+      cpf: ['', [Validators.required, Validators.pattern("^[0-9]{3}[0-9]{3}[0-9]{3}[0-9]{2}")]],
+
+      cnpj: ['', [Validators.required, Validators.pattern("^[0-9]{2}[0-9]{3}[0-9]{3}[0-9]{4}[0-9]{2}")]],
+
+      uf: ['', [Validators.required, Validators.pattern("^[A-Z]{2}")]],
+
+      cidade: ['', [Validators.required, Validators.pattern("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]*")]],
+
+      cep: ['', [Validators.required, Validators.pattern("^[0-9]{8}")]],
+
+      bairro: ['', [Validators.required, Validators.pattern("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]*")]],
+
+      endereco: ['', [Validators.required, Validators.pattern("^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]*")]],
+
+      numero: ['', [Validators.required, Validators.pattern("^[0-9]*")]],
     });
   }
 

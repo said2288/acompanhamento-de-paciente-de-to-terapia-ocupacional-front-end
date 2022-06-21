@@ -26,10 +26,7 @@ export class ControllerService {
   }
 
   read(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.baseUrl).pipe(
-     map((obj) => obj),
-     catchError(e => this.errorHandler(e))
-    )
+    return this.http.get<Client[]>(this.baseUrl)
   }
 
   readById(id: string): Observable<any> {
@@ -61,5 +58,6 @@ export class ControllerService {
     this.showMessage("Ocorreu um erro!", true)
     return EMPTY
   }
+  
 }
 

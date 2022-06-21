@@ -4,50 +4,68 @@
         <th mat-header-cell *matHeaderCellDef>Id</th>
         <td mat-cell *matCellDef="let row">{{row.id}}</td>
       </ng-container>
+
       <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef>Nome</th>
         <td mat-cell *matCellDef="let row">{{row.nome}}</td>
       </ng-container>
+
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let row">{{row.email}}</td>
       </ng-container>
+
       <ng-container matColumnDef="telefone">
         <th mat-header-cell *matHeaderCellDef>Telefone</th>
         <td mat-cell *matCellDef="let row">{{row.telefone}}</td>
       </ng-container>
+
       <ng-container matColumnDef="cpf">
         <th mat-header-cell *matHeaderCellDef>Cpf</th>
         <td mat-cell *matCellDef="let row">{{row.cpf}}</td>
       </ng-container>
+
       <ng-container matColumnDef="cnpj">
         <th mat-header-cell *matHeaderCellDef>Cnpj</th>
         <td mat-cell *matCellDef="let row">{{row.cnpj}}</td>
       </ng-container>
+
       <ng-container matColumnDef="uf">
         <th mat-header-cell *matHeaderCellDef>Uf</th>
-        <td mat-cell *matCellDef="let row">{{row.uf}}</td>
+        <!-- The ? mentions object and allows access to it -->
+        <td mat-cell *matCellDef="let row">{{row.addressEntity?.uf}}</td>
       </ng-container>
+
       <ng-container matColumnDef="cidade">
         <th mat-header-cell *matHeaderCellDef>Cidade</th>
-        <td mat-cell *matCellDef="let row">{{row.cidade}}</td>
+        <!-- The ? mentions object and allows access to it -->
+        <td mat-cell *matCellDef="let row">{{row.addressEntity?.cidade}}</td>
       </ng-container>
+
       <ng-container matColumnDef="cep">
         <th mat-header-cell *matHeaderCellDef>Cep</th>
-        <td mat-cell *matCellDef="let row">{{row.cep}}</td>
+        <!-- The ? mentions object and allows access to it -->
+        <td mat-cell *matCellDef="let row">{{row.addressEntity?.cep}}</td>
       </ng-container>
+
       <ng-container matColumnDef="bairro">
         <th mat-header-cell *matHeaderCellDef>Bairro</th>
-        <td mat-cell *matCellDef="let row">{{row.bairro}}</td>
+        <!-- The ? mentions object and allows access to it -->
+        <td mat-cell *matCellDef="let row">{{row.addressEntity?.bairro}}</td>
       </ng-container>
+
       <ng-container matColumnDef="endereco">
         <th mat-header-cell *matHeaderCellDef>Endereço</th>
-        <td mat-cell *matCellDef="let row">{{row.endereco}}</td>
+        <!-- The ? mentions object and allows access to it -->
+        <td mat-cell *matCellDef="let row">{{row.addressEntity?.endereco}}</td>
       </ng-container>
+
       <ng-container matColumnDef="numero">
         <th mat-header-cell *matHeaderCellDef>Numero</th>
-        <td mat-cell *matCellDef="let row">{{row.numero}}</td>
+        <!-- The ? mentions object and allows access to it -->
+        <td mat-cell *matCellDef="let row">{{row.addressEntity?.numero}}</td>
       </ng-container>
+
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let row">
@@ -56,14 +74,10 @@
                     edit
                 </i>
             </a>
-            <!-- <a routerLink="{{ row.id }}" class="delete">
-                <i class="material-icons">
-                    delete
-                </i>
-            </a> -->
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <h1 class="container" *ngIf="!clients">Não há clientes cadastrados</h1>
   </div>

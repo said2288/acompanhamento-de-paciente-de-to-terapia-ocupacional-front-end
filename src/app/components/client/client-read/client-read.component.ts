@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { ControllerService } from 'src/app/controllers/client.service';
 import { Client } from 'src/app/models/client.model';
-
 @Component({
   selector: 'app-client-read',
   templateUrl: './client-read.component.html',
@@ -10,7 +9,7 @@ import { Client } from 'src/app/models/client.model';
 })
 export class ClientReadComponent implements OnInit {
 
-  clients: Client[]
+  clients: Client[];
 
   displayedColumns = ['nome', 'email', 'telefone', 'cpf', 'cnpj',
     'uf', 'cidade', 'cep', 'bairro', 'endereco', 'numero', 'action']
@@ -22,5 +21,4 @@ export class ClientReadComponent implements OnInit {
       this.clients = clients
     })
   }
-
 }

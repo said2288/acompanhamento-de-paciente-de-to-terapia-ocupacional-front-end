@@ -1,3 +1,5 @@
+import { Address } from "./address.model"
+
 export interface Client {
     id?: String
     nome?: String
@@ -5,10 +7,5 @@ export interface Client {
     telefone?: number
     cpf?: number
     cnpj?: number
-    uf?: String
-    cidade?: String
-    cep?: number
-    bairro?: String
-    endereco?: String
-    numero?: number
+    addressEntity?: Address
 }

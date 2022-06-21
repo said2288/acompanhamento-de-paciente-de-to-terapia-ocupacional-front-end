@@ -12,7 +12,7 @@ import { Client } from 'src/app/models/client.model';
 export class ClientUpdateComponent implements OnInit {
 
   id: any
-  client: Client = {}
+  client: Client
 
   constructor(
     private controllerService: ControllerService,
