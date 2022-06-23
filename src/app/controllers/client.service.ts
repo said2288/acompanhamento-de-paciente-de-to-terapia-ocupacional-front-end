@@ -45,6 +45,14 @@ export class ControllerService {
      )
   }
 
+  disableClient(client: Client): Observable<any> {
+    const url = `${this.baseUrl}/desabilitar/cliente`
+    return this.http.put<any>(url, client).pipe(
+      map((obj) => obj),
+      catchError(e => this.errorHandler(e))
+     )
+  }
+
   showMessage(msg: string, isError: boolean = false): void {
     this.snackBar.open(msg, 'X', {
       duration: 3000,

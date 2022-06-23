@@ -4,13 +4,10 @@ table {
 
 .edit {
     margin-right: 10px;
-}
-
-.edit > i {
     color: #d9cd26;
 }
 
-.delete > i {
+.delete {
     color: #e35e6b;
 }
 
