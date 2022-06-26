@@ -20,3 +20,8 @@ table {
     justify-content: center;
     align-items: center;
 }
+
+.filterField {
+    display: flex;
+    justify-content: center;
+}

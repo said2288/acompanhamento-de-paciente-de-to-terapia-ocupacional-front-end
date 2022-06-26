@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 import { ControllerService } from 'src/app/controllers/client.service';
 import { Client } from 'src/app/models/client.model';
@@ -10,7 +12,9 @@ import { Client } from 'src/app/models/client.model';
 })
 export class ClientReadComponent implements OnInit {
 
-  clients: Client[];
+  @ViewChild(MatSort) sort: MatSort;
+
+  dataSource = new MatTableDataSource<Client>();
 
   displayedColumns = ['nome', 'email', 'telefone', 'cpf', 'cnpj',
     'uf', 'cidade', 'cep', 'bairro', 'endereco', 'numero', 'action']
@@ -23,9 +27,17 @@ export class ClientReadComponent implements OnInit {
     })
   }
 
+  applyFilter(filter: String) {
+    this.dataSource.filter = filter.trim().toLocaleLowerCase();
+  }
+
   ngOnInit(): void {
     this.controllerService.read().subscribe(clients => {
-      this.clients = clients
+      this.dataSource.data = clients as Client[];
     })
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
   }
 }
